@@ -176,7 +176,7 @@
                                     <tr>
                                         <td><%=c.firstname + " " + c.lastname%></td>
                                         <td><%=c.email%></td>
-                                        <td>GBP <%=c.balance%></td>
+                                        <td><%= c.currency %> <%=c.balance%></td>
                                         <td>
                                             <a href="/edit-user/<%=c._id%>" class="btn btn-secondary">More</a>
                                         </td>

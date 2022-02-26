@@ -27,13 +27,14 @@ router.get("/new-user/", ensureAuthenticated, async (req,res) => {
 
 router.post("/new-user", ensureAuthenticated, async (req,res) => {
     try{
-        const {balance, firstname, lastname, email, password, phone} = req.body;
-        if(!balance || ! firstname || !lastname || !email || !password || !phone ){
+        const {balance, currency, firstname, lastname, email, password, phone} = req.body;
+        if(!balance || !currency || !firstname || !lastname || !email || !password || !phone ){
             req.flash("error_msg", "Please fill all fields");
             return res.render("editUser", {pageTitle: "Welcome", req});
         }
         const newUser = {
             balance, 
+            currency,
             firstname,
             lastname,
             email,
@@ -65,14 +66,15 @@ router.get("/edit-user/:id", ensureAuthenticated, async (req,res) => {
 router.post("/edit-user/:id", ensureAuthenticated, async (req,res) => {
     try{
         const {id} = req.params;
-        const {balance, firstname, lastname, email, password, phone} = req.body;
+        const {balance, currency, firstname, lastname, email, password, phone} = req.body;
         const customer = await User.findOne({_id:id})
-        if(!balance || !firstname || !lastname || !email || !password || !phone){
+        if(!balance || !currency || !firstname || !lastname || !email || !password || !phone){
             req.flash("error_msg", "Please fill all fields");
             return res.render("editUser", {pageTitle: "Welcome", customer, req});
         }
         await User.updateOne({_id:id}, {
             balance, 
+            currency,
             firstname,
             lastname,
             email,
