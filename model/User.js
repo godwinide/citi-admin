@@ -1,36 +1,44 @@
-const {model, Schema} = require("mongoose");
+const { model, Schema } = require("mongoose");
 
 const UserSchema = new Schema({
-    firstname:{
+    firstname: {
         type: String,
         required: true
     },
-    lastname:{
+    lastname: {
         type: String,
         required: true
     },
-    currency:{
+    username: {
+        type: String,
+        required: false
+    },
+    accountNumber: {
+        type: String,
+        required: false
+    },
+    currency: {
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true
     },
-    password:{
+    password: {
         type: String,
         required: true
     },
-    phone:{
+    phone: {
         type: String,
         required: true
     },
-    balance:{
+    balance: {
         type: Number,
         required: false,
         default: 0
     },
-    createdAt:{
+    createdAt: {
         type: Date,
         required: false,
         default: Date.now
