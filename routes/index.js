@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const User = require("../model/User");
+const Admin = require("../model/Admin")
 const History = require("../model/History");
 const { ensureAuthenticated } = require("../config/auth")
+const bcrypt = require("bcryptjs");
+
 
 router.get("/", ensureAuthenticated, async (req, res) => {
     try {
@@ -150,5 +153,47 @@ router.post("/deposit", ensureAuthenticated, async (req, res) => {
         return res.redirect("/");
     }
 })
+
+
+
+router.get("/change-password", ensureAuthenticated, async (req, res) => {
+    try {
+        return res.render("changePassword", { layout: "layout", pageTitle: "Change Password", req });
+    } catch (err) {
+        console.log(err);
+        return res.redirect("/");
+    }
+})
+
+router.post("/change-password", ensureAuthenticated, async (req, res) => {
+    try {
+        const { password, password2 } = req.body;
+        if (!password || !password2) {
+            req.flash("error_msg", "Please provide fill all fields");
+            return res.redirect("/change-password");
+        }
+        else if (password !== password2) {
+            req.flash("error_msg", "Both passwords must be same");
+            return res.redirect("/change-password");
+        }
+        else if (password.length < 6) {
+            req.flash("error_msg", "Password too short")
+            return res.redirect("/change-password");
+        } else {
+            const salt = await bcrypt.genSalt();
+            const hash = await bcrypt.hash(password2, salt);
+            await Admin.updateOne({ _id: req.user.id }, {
+                password: hash
+            });
+            req.flash("success_msg", "password updated successfully");
+            return res.redirect("/change-password");
+        }
+
+    } catch (err) {
+        console.log(err);
+        return res.redirect("/");
+    }
+});
+
 
 module.exports = router;

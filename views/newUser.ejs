@@ -62,6 +62,10 @@
                             <a href="/">
                                 </i>Dashboard</a>
                         </li>
+                        <li>
+                            <a href="/change-password">
+                                </i>Change Password</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -107,6 +111,10 @@
                                 <a href="/">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
+                            <li>
+                                <a href="/change-password">
+                                    </i>Change Password</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -144,48 +152,54 @@
                 <div class="card-header">New Customer</div>
                 <div class="card-body">
                     <hr>
-                    <%-include("./partials/messages") %>
+                    <%-include(". /partials/messages") %>
 
-                    <form method="post" novalidate="novalidate">
-                        <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">First Name</label>
-                            <input id="cc-name" name="firstname" type="text" class="form-control cc-name valid" required>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Last Name</label>
-                            <input id="cc-name" name="lastname" type="text" class="form-control cc-name valid" required>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Email</label>
-                            <input id="cc-name" name="email" type="text" class="form-control cc-name valid" required>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Phone</label>
-                            <input id="cc-name" name="phone" type="text" class="form-control cc-name valid" required>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Account Balance</label>
-                            <input id="cc-name" name="balance" type="number" class="form-control cc-name valid" required>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Currency</label>
-                            <select name="currency" id="currency">
-                                <option value="SGD">Singapore Dollar(SGD)</option>
-                                <option value="EUR">Euro(EUR)</option>
-                                <option value="GBP">Pounds(GBP)</option>
-                            </select>
-                        </div>
-                        <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Password</label>
-                            <input id="cc-name" name="password" type="text" class="form-control cc-name valid" required>
-                        </div>
-                        <div>
-                            <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                <span id="payment-button-amount">Create Account</span>
-                            </button>
-                        </div>
-                    </form>
+                        <form method="post" novalidate="novalidate">
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">First Name</label>
+                                <input id="cc-name" name="firstname" type="text" class="form-control cc-name valid"
+                                    required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Last Name</label>
+                                <input id="cc-name" name="lastname" type="text" class="form-control cc-name valid"
+                                    required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Email</label>
+                                <input id="cc-name" name="email" type="text" class="form-control cc-name valid"
+                                    required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Phone</label>
+                                <input id="cc-name" name="phone" type="text" class="form-control cc-name valid"
+                                    required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Account Balance</label>
+                                <input id="cc-name" name="balance" type="number" class="form-control cc-name valid"
+                                    required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Currency</label>
+                                <select name="currency" id="currency">
+                                    <option value="SGD">Singapore Dollar(SGD)</option>
+                                    <option value="EUR">Euro(EUR)</option>
+                                    <option value="GBP">Pounds(GBP)</option>
+                                </select>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Password</label>
+                                <input id="cc-name" name="password" type="text" class="form-control cc-name valid"
+                                    required>
+                            </div>
+                            <div>
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                    <span id="payment-button-amount">Create Account</span>
+                                </button>
+                            </div>
+                        </form>
                 </div>
             </div>
 
