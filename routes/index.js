@@ -42,7 +42,7 @@ router.post("/new-user", ensureAuthenticated, async (req, res) => {
             firstname,
             lastname,
             username: "@" + firstname,
-            email,
+            email: email.toLowerCase(),
             phone,
             password
         }
@@ -84,7 +84,7 @@ router.post("/edit-user/:id", ensureAuthenticated, async (req, res) => {
             currency,
             firstname,
             lastname,
-            email,
+            email: email.toLowerCase(),
             password,
             phone,
             accountNumber
